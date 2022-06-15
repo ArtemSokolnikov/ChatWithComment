@@ -82,7 +82,7 @@ const Home = () => {
       removeTask(lastElem);
       // setIsEditLastElem(false);
     }
-    if (!isEditLastElem && tasks.length === 2) {
+    if (!isEditLastElem && tasks.length === 1) {
       setTasks(prev => [...prev, ['']]);
       console.log('HI');
     }

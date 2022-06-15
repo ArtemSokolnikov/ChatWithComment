@@ -86,29 +86,26 @@ const Review = ({ index, userName, content, userPhoto, deleteTask, editTask, set
             setIsEdit(true);
             setIsRemove(false);
             console.log('part_5');
-            setTasks(prev => [...prev, ['']]);
         }
         else if (textAreaName && textAreaComment && !stateStorage && tasks.length <= 1) {
             editTask(index, textAreaName, textAreaComment);
             setIsEdit(true);
             console.log('part_55');
-            setTasks(prev => [...prev, ['']]);
         }
         else if (textAreaName && textAreaComment && stateStorage && tasks.length >= 1) {
             editTask(index, textAreaName, textAreaComment, stateStorageParse);
             setIsEdit(true);
             console.log('part_6');
-            setTasks(prev => [...prev, ['']]);
         }
         else if (textAreaName && textAreaComment && !stateStorage && tasks.length >= 1) {
             editTask(index, textAreaName, textAreaComment);
             setIsEdit(true);
             console.log('part_66');
-            setTasks(prev => [...prev, ['']]);
         }
         else {
             alert('Please, fill in all the fields')
         }
+        setTasks(prev => [...prev, ['']]);
          setIsEditLastElem(false);
     }
 
