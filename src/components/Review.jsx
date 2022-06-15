@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const Review = ({ index, userName, content, userPhoto, deleteTask, editTask, setTasks, tasks, setIsEditLastElem, isUpdate, setIsUpdate, isDisableBtn, setIsDisableBtn }) => {
-    const [isEdit, setIsEdit] = useState(false);
+const Review = ({ index, userName, content, userPhoto, deleteTask, editTask, setTasks, tasks, setIsEditLastElem,
+                    isUpdate, setIsUpdate, isDisableBtn, setIsDisableBtn }) => {
+    const [isEdit, setIsEdit] = useState(true);
     const [isCorrect, setIsCorrect] = useState(false);
     const [textAreaName, setTextAreaName] = useState('');
     const [textAreaComment, setTextAreaComment] = useState('');
@@ -12,7 +13,7 @@ const Review = ({ index, userName, content, userPhoto, deleteTask, editTask, set
 
     const handlieClickEdit = () => {
         setIsDisableBtn(true);
-        setIsEdit(false);
+        setIsEdit(true);
         setIsCorrect(true);
         setIsEditLastElem(true);
         setIsUpdate(true);
@@ -35,23 +36,23 @@ const Review = ({ index, userName, content, userPhoto, deleteTask, editTask, set
         if (textAreaName && textAreaComment && stateStorage) {
             const stateStorageParse = JSON.parse(stateStorage);
             editTask(index, textAreaName, textAreaComment, stateStorageParse);
-            setIsEdit(true);
+            setIsEdit(false);
             setTasks(prev => [...prev, ['']]);
             localStorage.setItem('index', +`${currentIndex}` + 1);
         }
         else if (textAreaName && textAreaComment && !stateStorage) {
             editTask(index, textAreaName, textAreaComment);
-            setIsEdit(true);
+            setIsEdit(false);
             setTasks(prev => [...prev, ['']]);
             localStorage.setItem('index', +`${currentIndex}` + 1);
         } else if (textAreaName && textAreaComment && stateStorage && (index === tasks.length - 1)) {
             editTask(index, textAreaName, textAreaComment);
-            setIsEdit(false);
+            setIsEdit(true);
             setTasks(prev => [...prev, ['']]);
             localStorage.setItem('index', +`${currentIndex}` + 1);
         } else if (textAreaName && textAreaComment && !stateStorage && (index === tasks.length - 1)) {
             editTask(index, textAreaName, textAreaComment);
-            setIsEdit(false);
+            setIsEdit(true);
             setTasks(prev => [...prev, ['']]);
             localStorage.setItem('index', +`${currentIndex}` + 1);
         }
@@ -65,19 +66,19 @@ const Review = ({ index, userName, content, userPhoto, deleteTask, editTask, set
         const stateStorageParse = JSON.parse(stateStorage);
         if (textAreaName && textAreaComment && stateStorage && tasks.length <= 1) {
             editTask(index, textAreaName, textAreaComment, stateStorageParse);
-            setIsEdit(true);
+            setIsEdit(false);
         }
         else if (textAreaName && textAreaComment && !stateStorage && tasks.length <= 1) {
             editTask(index, textAreaName, textAreaComment);
-            setIsEdit(true);
+            setIsEdit(false);
         }
         else if (textAreaName && textAreaComment && stateStorage && tasks.length >= 1) {
             editTask(index, textAreaName, textAreaComment, stateStorageParse);
-            setIsEdit(true);
+            setIsEdit(false);
         }
         else if (textAreaName && textAreaComment && !stateStorage && tasks.length >= 1) {
             editTask(index, textAreaName, textAreaComment);
-            setIsEdit(true);
+            setIsEdit(false);
         }
         else {
             alert('Please, fill in all the fields')
@@ -91,7 +92,7 @@ const Review = ({ index, userName, content, userPhoto, deleteTask, editTask, set
 
     useEffect(() => {
         if ((index === tasks.length - 1 && !isUpdate)) {
-            setIsEdit(false);
+            setIsEdit(true);
             setTextAreaName('');
             setTextAreaComment('');
         }
@@ -133,7 +134,7 @@ const Review = ({ index, userName, content, userPhoto, deleteTask, editTask, set
             </div>
         );
     }
-    return isEdit ? renderNormal() : renderEdit()
+    return isEdit ? renderEdit() : renderNormal()
 }
 
 export default Review
