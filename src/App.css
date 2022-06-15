@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.field {
   display: flex;
+  width: 29%;
+  margin-left: 1%;
+  color: #fff;
+  font-size: 1.3em;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: left;
 }
 
-.App-link {
-  color: #61dafb;
+.field-title {
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box {
+  display: flex;
+  direction: column;
+  justify-content: space-between;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 500px;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.286);
+}
+.boxEdit{
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 5px;
+  width: 500px;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.286);
+
+}
+
+.boxText{
+
+height: 55px;
+}
+
+.box:last-child {
+  margin-bottom: 0;
+}
+
+textarea {
+  resize: none;
+  background-color: #fafafa;
+  border: 1.5px solid silver;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 0.7em;
+  width: 90%;
+  outline: none;
+}
+
+.btnNew {
+  background-color: rgb(252, 225, 225);
+  border-radius: 2px;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.345);
+  color: black;
+  margin-bottom: 10px;
+  width: 50%;
+  height: 40px;
+}
+.btnInCorner {
+  border: 1px solid black;
+  border-radius: 2px;
+  margin: 0px 1px;
+  margin-bottom: 10px;
+}
+
+.btnSuccess {
+  background-color: rgb(252, 225, 225);
+  border-radius: 2px;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.345);
+  margin-top: 5px;
+  width: 50px;
+  height: 30px;
+  font-size: 14px;
+}
+
+.userName {
+  color: black;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.commentOfUser {
+  color: black;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.currentPicture {
+  margin-top: 25px;
+  border: 6px solid rgb(216, 213, 213);
+  border-radius: 40px;
+}
+
+.userProfile {
+  display: flex;
+  direction: column;
+}
+
+.btnRemoveEdit {
+  display: flex;
+  direction: row;
 }
